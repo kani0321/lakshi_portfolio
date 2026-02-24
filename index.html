@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshi Malika | Teacher Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --primary:#5da399;
+    --accent:#ffd369;
+    --white-glass:rgba(255,255,255,0.15);
+}
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    color:#fff;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* ================= BACKGROUND ================= */
+
+.bg-animation{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    background: linear-gradient(-45deg, #1f8f7e, #263239, #1b6450, #37456a);
+    background-size:400% 400%;
+    animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* Glow blobs */
+.bg-animation::before,
+.bg-animation::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.18);
+    filter:blur(120px);
+}
+
+.bg-animation::before{
+    top:-150px;
+    left:-150px;
+}
+
+.bg-animation::after{
+    bottom:-150px;
+    right:-150px;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
+    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+    z-index:1000;
+}
+
+nav .logo{
+    font-weight:400;
+    color:#fff;
+    font-size: 28px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#fff;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:var(--accent);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding-top:120px;
+}
+
+.hero img{
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    object-fit:cover;
+    border:6px solid rgba(255,255,255,0.4);
+    box-shadow:0 25px 60px rgba(0,0,0,0.4);
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:3rem;
+}
+
+.hero span{
+    color:var(--accent);
+}
+
+.hero p{
+    margin:10px 0;
+    font-size:1.2rem;
+}
+
+.p1 {
+    font-size: 12px;
+}
+/* ================= BUTTONS ================= */
+
+.btn{
+    padding:12px 30px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:500;
+    margin:5px;
+    display:inline-block;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--accent);
+    color:#333;
+}
+
+.btn-accent{
+    background:#fff;
+    color:#333;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.35);
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:120px 8%;
+}
+
+section h2{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:60px;
+}
+
+/* ================= CARDS ================= */
+
+.card{
+    background:var(--white-glass);
+    backdrop-filter:blur(20px);
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.25);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+}
+
+.card img{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+/* ================= GRID ================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.gallery-item img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.1);
+}
+
+.overlay{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:20px;
+    background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);
+    transform:translateY(100%);
+    transition:.4s;
+}
+
+.gallery-item:hover .overlay{
+    transform:translateY(0);
+}
+
+/* ================= CV SECTION ================= */
+
+#cv{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(25px);
+    border-radius:30px;
+    margin:0 5%;
+    padding:60px;
+    align-items: center;
+}
+
+.cv-container{ 
+    display:grid; 
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); 
+    gap:60px; 
+    align-items:center 
+}
+
+.cv-left ul{
+ margin:20px 0;
+ }
+
+ .cv-left li{ 
+margin-bottom:10px; 
+}
+
+
+/* ================= CONTACT ================= */
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    max-width:600px;
+    margin:auto;
+}
+
+input,textarea{
+    padding:15px;
+    border-radius:10px;
+    border:none;
+}
+
+button{
+    padding:15px;
+    border:none;
+    border-radius:25px;
+    background:var(--accent);
+    cursor:pointer;
+    font-weight:600;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:30px;
+}
+
+/* ================= REVEAL ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+/* ================= MODULES SECTION ================= */
+
+.modules-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+    gap:30px;
+}
+
+.module-card{
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(25px);
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+    transition:0.4s;
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.module-card h3{
+    margin-bottom:15px;
+    color:var(--accent);
+    font-size:1.2rem;
+}
+
+.module-card p{
+    font-size:0.95rem;
+    line-height:1.6;
+    color:#f1f1f1;
+}
+
+.module-card:hover{
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0 25px 50px rgba(0,0,0,0.4);
+}
+
+/* ================= CONTACT SECTION (PROFESSIONAL STYLE) ================= */
+
+.contact-section{
+   
+    color:#ffffff;
+    padding:80px 10%;
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.contact-wrapper{
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:60px;
+    max-width:80%;
+    margin:auto;
+}
+
+.contact-left h2{
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.contact-intro{
+    color:#ffffff;
+    line-height:1.6;
+}
+
+.contact-right{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.contact-row{
+    display:flex;
+    flex-direction:column;
+    border-bottom:1px solid #ddd;
+    padding-bottom:15px;
+}
+
+.contact-label{
+    font-weight:600;
+    font-size:0.9rem;
+    color:#ffffff;
+    margin-bottom:6px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.contact-value{
+    font-size:1rem;
+    color:#ffffff;
+}
+
+.contact-value a{
+    text-decoration:none;
+    color:#ffffff;
+}
+
+.contact-value a:hover{
+    text-decoration:underline;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .contact-wrapper{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+<div class="bg-animation"></div>
+<nav>
+<div class="logo">M.I.G. Lakshi Malika      
+Virajini </div>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Modules</a></li>
+<li><a href="#cv">CV</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section id="home" class="hero">
+<img src="images/WhatsApp Image 2026-02-23 at 21.19.06 profile pic.jpeg" alt="Profile">
+<h1>Language. Leadership. Lifelong Learning.</h1>
+<p>Professional English Educator Focused on Academic Achievement and Personal Growth.</p>
+<a href="#projects" class="btn btn-accent">View My Work</a>
+<a href="Lakshi_Malika_CV (1).pdf" class="btn btn-primary" download>Download CV</a>
+</section>
+
+<section id="about" class="reveal">
+<h2>About Me</h2>
+<div class="grid">
+<div class="card">
+<h3>Teaching Philosophy</h3><br>
+<p>
+My teaching philosophy is rooted in the principles of educational psychology and learner-centered pedagogy. I believe that a well-managed, inclusive classroom fosters both academic excellence and personal growth. As an English teacher, I focus on developing students’ literacy, communication, and critical thinking skills through engaging literature and purposeful language instruction.
+</p>
+<br>
+<p>
+By integrating effective teaching methodologies with guidance and counseling principles, I strive to support each learner’s intellectual and emotional development, preparing them to become confident communicators and lifelong learners.
+</p>
+</div>
+<div class="card">
+<h3>Professional Experience</h3><br><br><br>
+<p>
+Currently teaching English Language and Literature to Grades 6–9 at St. Francis College, Kelaniya. <br><br> Responsible for curriculum delivery, lesson planning, classroom management, and student assessment.
+</p>
+<br>
+
+</div>
+<div class="card">
+<h3>Education</h3><br>
+<h4>BRITISH COUNCIL</h4>  
+<p>English (Basic level)-2023 
+English (Intermediate Level)-2024 </p>
+ <br>
+<h4>ESOFT METRO CAMPUS </h4>
+<p>Diploma in Information and Communication Technology (2023) </p>
+</div>
+</div>
+</section>
+
+<section id="projects" class="reveal">
+<h2>Academic Modules & Professional Training</h2>
+
+<div class="modules-grid">
+
+<div class="module-card">
+<h3>Foundations of Education</h3>
+<p>Explored philosophical, sociological, and historical foundations shaping modern educational systems and professional teaching standards.</p>
+</div>
+
+<div class="module-card">
+<h3>Educational Psychology</h3>
+<p>Studied learner development, motivation, cognition, and behavioral theories to enhance classroom effectiveness and student engagement.</p>
+</div>
+
+<div class="module-card">
+<h3>English Literature</h3>
+<p>Analyzed classical and modern literary works to develop critical thinking, interpretation, and appreciation of diverse literary genres.</p>
+</div>
+
+<div class="module-card">
+<h3>English Language & Communication</h3>
+<p>Focused on grammar, academic writing, spoken discourse, and effective communication strategies for academic and real-world contexts.</p>
+</div>
+
+<div class="module-card">
+<h3>Linguistics & Language Studies</h3>
+<p>Examined the structure, function, and development of language, including phonology, morphology, syntax, and semantics.</p>
+</div>
+
+<div class="module-card">
+<h3>Classroom Management</h3>
+<p>Developed structured strategies for maintaining positive discipline, inclusive learning environments, and effective instructional control.</p>
+</div>
+
+<div class="module-card">
+<h3>Educational Counseling & Guidance</h3>
+<p>Learned principles of student support, emotional development, and academic guidance to foster holistic learner growth.</p>
+</div>
+
+<div class="module-card">
+<h3>Four Language Skills</h3>
+<p>Advanced methodologies for teaching Listening, Speaking, Reading, and Writing to build comprehensive language proficiency.</p>
+</div>
+
+<div class="module-card">
+<h3>Teaching & Learning Methods</h3>
+<p>Applied modern pedagogical approaches including learner-centered instruction, differentiated learning, and formative assessment techniques.</p>
+</div>
+
+</div>
+</section>
+
+<section id="projects" class="reveal">
+<div class="gallery">
+<h2>Teaching Memories</h2>
+<div class="gallery-grid">
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.08.27 (1).jpeg">
+<div class="overlay">Interactive Learning Session</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.08.27 (2).jpeg">
+<div class="overlay">Robotics Workshop</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.08.27 (3).jpeg">
+<div class="overlay">Robotics Workshop</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.08.27.jpeg">
+<div class="overlay">Robotics Workshop</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.08.53.jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.09.46 (1).jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.09.46 (2).jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.09.46 (3).jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.09.46 (4).jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.09.46 (5).jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.09.46.jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.10.05.jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.16.04.jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.10.41.jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.20.35.jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 21.58.53 (2).jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+<div class="gallery-item">
+<img src="images/WhatsApp Image 2026-02-23 at 22.00.16 (5).jpeg">
+<div class="overlay">STEM Fair Event</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="cv" class="reveal">
+<h2>Curriculum Vitae</h2>
+<div class="cv-container">
+<div class="cv-left">
+<h3>Professional Highlights</h3>
+<ul>
+<li>✔ 10+ Years Experience</li>
+<li>✔ Certified STEM Educator</li>
+<li>✔ Robotics Mentor</li>
+<li>✔ International Teaching Exposure</li>
+</ul>
+<a href="Lakshi_Malika_CV (1).pdf" class="btn btn-primary" download>Download Full CV</a>
+</div>
+<div class="cv-preview">
+<h3>Why Review My CV?</h3>
+<p>Includes qualifications, certifications, leadership roles, and project achievements.</p>
+</div>
+</div>
+</section>
+
+<section id="contact" class="reveal contact-section">
+  <div class="contact-wrapper">
+    
+    <div class="contact-left">
+      <h2>Contact</h2>
+      <p class="contact-intro">
+        For professional inquiries, academic collaboration, or employment opportunities,
+        please use the contact details below.
+      </p>
+    </div>
+
+    <div class="contact-right">
+      <div class="contact-row">
+        <span class="contact-label">Address</span>
+        <span class="contact-value">
+          No: 162/3/1, Sheelawansha Mawatha,<br>
+          Sooriyapaluwa, Kadawata
+        </span>
+      </div>
+
+      <div class="contact-row">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">
+          <a href="tel:0705277702">070 527 7702</a>
+        </span>
+      </div>
+
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">
+          <a href="mailto:lakshimalika228@gmail.com">
+            lakshimalika228@gmail.com
+          </a>
+        </span>
+      </div>
+
+          </div>
+
+  </div>
+</section>
+
+<footer>
+© 2026 Lakshi Malika | Teacher Portfolio
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){
+document.querySelectorAll('.reveal').forEach(sec=>{
+if(sec.getBoundingClientRect().top < window.innerHeight - 150){
+sec.classList.add('active');
+}
+});
+});
+</script>
+
+</body>
+</html>
